@@ -29,7 +29,7 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 	JLabel lblUsername;
 	JLabel lblPassword;
 	JButton dayNightButton;
-	JButton randomButton; // Random 버튼 추가
+	JButton randomButton;
 
 	public Member_List() {
 		super("회원관리 프로그램  v0.1.1");
@@ -136,7 +136,6 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		jTable.setBackground(Color.WHITE);
 		jTable.setForeground(Color.BLACK);
 		dayNightButton.setText("Night");
-		// 이름과 비밀번호 입력란 배경색 및 텍스트 색상 변경
 		lblUsername.setBackground(Color.WHITE);
 		lblUsername.setForeground(Color.BLACK);
 		lblPassword.setBackground(Color.WHITE);
@@ -149,7 +148,6 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		jTable.setBackground(Color.BLACK);
 		jTable.setForeground(Color.WHITE);
 		dayNightButton.setText("Day");
-		// 이름과 비밀번호 입력란 배경색 및 텍스트 색상 변경
 		lblUsername.setBackground(Color.BLACK);
 		lblUsername.setForeground(Color.WHITE);
 		lblPassword.setBackground(Color.BLACK);
@@ -158,7 +156,6 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 
 	private void setRandomBackgroundColor() {
 		Random rand = new Random();
-		// 랜덤한 RGB 값 생성
 		int red = rand.nextInt(256);
 		int green = rand.nextInt(256);
 		int blue = rand.nextInt(256);
