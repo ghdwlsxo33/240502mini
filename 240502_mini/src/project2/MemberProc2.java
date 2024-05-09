@@ -1,4 +1,4 @@
-package miniproject;
+package project2;
 
 import java.awt.*;
 import java.sql.*;
@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.*;
 
-public class MemberProc extends JFrame implements ActionListener {
+public class MemberProc2 extends JFrame implements ActionListener {
 
 	JPanel p;
 	JTextField tfId, tfName, tfAddr, tfEmail;
@@ -22,9 +22,9 @@ public class MemberProc extends JFrame implements ActionListener {
 
 	GridBagLayout gb;
 	GridBagConstraints gbc;
-	Member_List mList;
+	Member_List2 mList;
 
-	public MemberProc() { // 가입용 생성자
+	public MemberProc2() { // 가입용 생성자
 		
 		    createUI(); // UI 작성해주는 메소드 호출
 		    btnUpdate.setEnabled(false);
@@ -38,7 +38,7 @@ public class MemberProc extends JFrame implements ActionListener {
 	
 	
 	
-	public MemberProc(Member_List mList) { // 가입용 생성자
+	public MemberProc2(Member_List2 mList) { // 가입용 생성자
 		createUI(); // UI작성해주는 메소드
 		btnUpdate.setEnabled(false);
 		btnUpdate.setVisible(false);
@@ -48,7 +48,7 @@ public class MemberProc extends JFrame implements ActionListener {
 
 	}// 생성자
 
-	public MemberProc(String id, Member_List mList) { // 수정/삭제용 생성자
+	public MemberProc2(String id, Member_List2 mList) { // 수정/삭제용 생성자
 		createUI();
 		btnInsert.setEnabled(false);
 		btnInsert.setVisible(false);
@@ -56,14 +56,14 @@ public class MemberProc extends JFrame implements ActionListener {
 
 		System.out.println("id=" + id);
 
-		MemberDAO dao = new MemberDAO();
-		MemberDTO vMem = dao.getMemberDTO(id);
+		MemberDAO2 dao = new MemberDAO2();
+		MemberDTO2 vMem = dao.getMemberDTO(id);
 		viewData(vMem);
 
 	}// id를 가지고 생성
 
 	// MemberDTO 의 회원 정보를 가지고 화면에 셋팅해주는 메소드
-	private void viewData(MemberDTO vMem) {
+	private void viewData(MemberDTO2 vMem) {
 
 		String id = vMem.getId();
 		String pwd = vMem.getPwd();
@@ -239,7 +239,7 @@ public class MemberProc extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
-		new MemberProc();
+		new MemberProc2();
 	}
 
 	@Override
@@ -264,7 +264,7 @@ public class MemberProc extends JFrame implements ActionListener {
 		}
 
 		// jTable내용 갱신 메소드 호출
-		 mList.jTableRefresh();
+		mList.jTableRefresh();
 
 	}// actionPerformed
 
@@ -277,7 +277,7 @@ public class MemberProc extends JFrame implements ActionListener {
 			return; // 메소드 끝
 		}
 		// System.out.println(mList);
-		MemberDAO dao = new MemberDAO();
+		MemberDAO2 dao = new MemberDAO2();
 		boolean ok = dao.deleteMember(id, pwd);
 
 		if (ok) {
@@ -294,9 +294,9 @@ public class MemberProc extends JFrame implements ActionListener {
 	private void UpdateMember() {
 
 		// 1. 화면의 정보를 얻는다.
-		MemberDTO dto = getViewData();
+		MemberDTO2 dto = getViewData();
 		// 2. 그정보로 DB를 수정
-		MemberDAO dao = new MemberDAO();
+		MemberDAO2 dao = new MemberDAO2();
 		boolean ok = dao.updateMember(dto);
 
 		if (ok) {
@@ -311,8 +311,8 @@ public class MemberProc extends JFrame implements ActionListener {
 
 		// 화면에서 사용자가 입력한 내용을 얻는다.
 		// 한명의 회원의 정보를 담아 두는 모델 객체.
-		MemberDTO dto = getViewData();
-		MemberDAO dao = new MemberDAO();
+		MemberDTO2 dto = getViewData();
+		MemberDAO2 dao = new MemberDAO2();
 		boolean ok = dao.insertMember(dto);
 
 		if (ok) {
@@ -331,10 +331,10 @@ public class MemberProc extends JFrame implements ActionListener {
 	// 게시판에서 한 게시글의 정보를 출력할 때,
 	// 예) 게시판 목록 -> 한 게시글의 상세 정보를 조회시 활용하기.
 	// 이 메서드의 리턴의 타입은, 회원 정보를 가지고 있는 : MemberDTO 타입.
-	public MemberDTO getViewData() {
+	public MemberDTO2 getViewData() {
 
 		// 화면에서 사용자가 입력한 내용을 얻는다.
-		MemberDTO dto = new MemberDTO();
+		MemberDTO2 dto = new MemberDTO2();
 		String id = tfId.getText();
 		String pwd = pfPwd.getText();
 		String name = tfName.getText();
