@@ -2,6 +2,7 @@ package miniproject;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -10,6 +11,7 @@ import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,18 +47,19 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		pbtn = new JPanel();
 		btnInsert = new JButton("회원가입");
 		dayNightButton = new JButton("Day");
-		randomButton = new JButton("Random"); // Random 버튼 생성
+		randomButton = new JButton("Random"); 
 
 		pbtn.add(btnInsert);
 		pbtn.add(dayNightButton);
-		pbtn.add(randomButton); // Random 버튼 패널에 추가
+		pbtn.add(randomButton); 
 
 		add(pbtn, BorderLayout.NORTH);
 
 		jTable.addMouseListener(this);
+		
 		btnInsert.addActionListener(this);
 		dayNightButton.addActionListener(this);
-		randomButton.addActionListener(this); // Random 버튼에 액션 리스너 등록
+		randomButton.addActionListener(this); 
 
 		setSize(600, 200);
 		setVisible(true);
@@ -80,9 +83,11 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 	}
 
 	public void jTableRefresh() {
+		getContentPane().setBackground(Color.BLACK);
 		MemberDAO dao = new MemberDAO();
 		DefaultTableModel model = new DefaultTableModel(dao.getMemberList(), getColumn());
 		jTable.setModel(model);
+		
 	}
 
 	public static void main(String[] args) {
@@ -125,7 +130,7 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 				setNightMode();
 			}
 		} else if (e.getSource() == randomButton) {
-			setRandomBackgroundColor(); // Random 버튼 클릭 시 랜덤 배경색 설정
+			setRandomBackgroundColor(); 
 		}
 
 	}
@@ -136,10 +141,9 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		jTable.setBackground(Color.WHITE);
 		jTable.setForeground(Color.BLACK);
 		dayNightButton.setText("Night");
-		lblUsername.setBackground(Color.WHITE);
-		lblUsername.setForeground(Color.BLACK);
-		lblPassword.setBackground(Color.WHITE);
-		lblPassword.setForeground(Color.BLACK);
+		pane.setBackground(Color.WHITE);
+		pane.setForeground(Color.BLACK);
+		
 	}
 
 	private void setNightMode() {
@@ -147,11 +151,10 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		pbtn.setBackground(Color.BLACK);
 		jTable.setBackground(Color.BLACK);
 		jTable.setForeground(Color.WHITE);
+		pane.setBackground(Color.BLACK);
+		pane.setBackground(Color.WHITE);
 		dayNightButton.setText("Day");
-		lblUsername.setBackground(Color.BLACK);
-		lblUsername.setForeground(Color.WHITE);
-		lblPassword.setBackground(Color.BLACK);
-		lblPassword.setForeground(Color.WHITE);
+		
 	}
 
 	private void setRandomBackgroundColor() {
@@ -162,7 +165,10 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		Color randomColor = new Color(red, green, blue);
 		getContentPane().setBackground(randomColor);
 		jTable.setBackground(new Color(red, green, blue));
-		jTable.setForeground(new Color(red, green, blue));
-		pbtn.setBackground(new Color(red, green, blue));// 랜덤 배경색으로 설정
+		jTable.setForeground(Color.BLACK);
+		pbtn.setBackground(new Color(red, green, blue));
+		pane.setBackground(new Color(red, green, blue));
+		pane.setForeground(Color.BLACK);
+		
 	}
 }
