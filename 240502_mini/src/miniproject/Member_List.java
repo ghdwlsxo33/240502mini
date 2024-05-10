@@ -124,7 +124,7 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		if (e.getSource() == btnInsert) {
 			new MemberProc(this);
 		} else if (e.getSource() == dayNightButton) {
-			if (dayNightButton.getText().equals("Day")) {
+			if (dayNightButton.getText().equals("Night")) {
 				setDayMode();
 			} else {
 				setNightMode();
@@ -137,10 +137,10 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 
 	private void setDayMode() {
 		getContentPane().setBackground(Color.WHITE);
-		pbtn.setBackground(Color.WHITE);
+		pbtn.setBackground(new Color(238, 238, 238));
 		jTable.setBackground(Color.WHITE);
 		jTable.setForeground(Color.BLACK);
-		dayNightButton.setText("Night");
+		dayNightButton.setText("Day");
 		pane.setBackground(Color.WHITE);
 		pane.setForeground(Color.BLACK);
 		
@@ -153,7 +153,7 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		jTable.setForeground(Color.WHITE);
 		pane.setBackground(Color.BLACK);
 		pane.setBackground(Color.WHITE);
-		dayNightButton.setText("Day");
+		dayNightButton.setText("Night");
 		
 	}
 
